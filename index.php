@@ -123,10 +123,20 @@ if(!$db) { // The user did not ask to import any db
 			$skip = true;
 		}
 		*/
-		
-		if(in_array($table, $tables_to_skip)){
-			$skip = true;
+		if($tables_to_import){
+			if(in_array($table, $tables_to_import)){
+				$skip = false;
+			}
+			else
+				$skip = true;
 		}
+		
+		if($tables_to_skip){
+			if(in_array($table, $tables_to_skip)){
+				$skip = true;
+			}
+		}
+
 
 		echo "...\n";
 		echo "** Table \"".$table."\"\n";
